@@ -33,6 +33,8 @@ def app_selection():
 			pass
 	from runpy import run_path
 	file_path=f'./apps/{app[userin]}'
+	with open('args.txt','w') as f:
+		f.write(str(UserData['file_perm']))
 	f=run_path(file_path,run_name='__main__')
 	del run_path
 def file_permisons():

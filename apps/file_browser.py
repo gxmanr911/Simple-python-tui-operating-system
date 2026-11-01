@@ -16,20 +16,29 @@ def update_files():
 
 def show_files():
 	update_files()
+	print('0: exit')
 	for i in enumerate(files):
-		print(f"{i[0]}: {i[1]}")
+		print(f"{i[0]+1}: {i[1]}")
 	while True:
 		try:
 			userin=int(input('enter index of file: '))
 			break
 		except:
 			print("not a vailid int")
-	return f'./files/{files[userin]}'
+	if userin!=0:
+	    return f'./files/{files[userin-1]}'
+	else:
+	    return False
 def view_file(file_path):
 	with open(file_path,'r') as f:
 		x=f.read()
 	print(x)
 def run():
-	view_file(show_files())
+    while True:
+        x=show_files()
+        if x!=False:
+            view_file(x)
+        else:
+            break
 if __name__=='__main__':
 	run()

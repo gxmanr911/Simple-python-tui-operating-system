@@ -19,5 +19,7 @@ def app_selection():
 	file_path=f'./apps/{app[userin]}'
 	f=run_path(file_path,run_name='__main__')
 	del run_path
+	with open('args.txt','w') as f:
+		f.write('True')
 app_selection()
 print("back to OS")

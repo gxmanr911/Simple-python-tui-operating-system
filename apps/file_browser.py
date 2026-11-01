@@ -1,6 +1,10 @@
-#import user_handling
-#file_permitions=UserData['file_perm']
-file_permitions=True
+from main import file_permisons
+import user_handling
+with open('args.txt','r') as f:
+	if f.read()=='True':
+		file_permitions=True
+	else:
+		file_permitions=False
 if file_permitions:
 	print('you have File permitions that means you can edit and create files')
 else:
@@ -33,6 +37,20 @@ def view_file(file_path):
 	with open(file_path,'r') as f:
 		x=f.read()
 	print(x)
+	if file_permitions:
+		print('what would you like to do with the file')
+		userin=input("""[D]elete: """)
+		if userin.upper()=='D':
+			from os import remove
+			remove(file_path)
+			del remove
+def check_file_exists(file_path):
+    try:
+        with open(file_path,'r') as x:
+            pass
+        return True
+    except:
+        return False
 def run():
     while True:
         x=show_files()
